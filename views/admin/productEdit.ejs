@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<%- include('../partials/head')%> 
+  <body>
+    <%- include('./partials/header') %>
+    <main class="my-5">
+        <div class="container">
+            <form action="/products/edit/<%= auto.id  %>?_method=PUT " method="post" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
+                <div class="col-12 col-md-6 col-md-4">
+                  <label for="marca" class="form-label">Marca</label>
+                  <input type="text" value="<%= auto.marca %> " class="form-control" id="validationCustom01" name="marca" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-md-4">
+                    <label for="modelo" class="form-label">Modelo</label>
+                  <input type="text" value="<%= auto.modelo %> " class="form-control" id="validationCustom02" name="modelo" required>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-md-4">
+                  <label for="patente" class="form-label">Patente</label>
+                <input type="text" value="<%= auto.patente %> " class="form-control" id="patente" name="patente" required>
+                <div class="invalid-feedback">
+                  Please select a valid state.
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-md-4">
+                <label for="anio" class="form-label">Año</label>
+              <!--
+                <input type="date" value="" class="form-control" id="anio" name="anio" required>
+
+              -->
+              <input class="form-control" type="number" min="2000" max="2021" step="1" value=<%= auto.anio  %>  name="anio" id="anio">
+              <div class="invalid-feedback">
+                Please provide a valid city.
+              </div>
+            </div>
+                <div class="col-12 col-md-6 col-md-4">
+                    <label for="precio" class="form-label">Precio</label>
+                  <div class="input-group has-validation">
+                    <input type="number" value=<%= auto.precio %>  class="form-control" id="validationCustomUsername" name="precio" required>
+                    <div class="invalid-feedback">
+                      Please choose a username.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-md-4">
+                    <label for="cuotas" class="form-label">Cuotas</label>
+                    <div class="input-group has-validation">
+                      <input type="number" value=<%= auto.cuotas %> class="form-control" id="validationCustomUsername" name="cuotas" required>
+                      <div class="invalid-feedback">
+                        Please choose a username.
+                      </div>
+                    </div>
+                  </div>
+
+                <div class="col-12 col-md-6 col-md-4">
+                    <label for="color" class="form-label">Color</label>
+                <select name="color" id="color" class="form-select">
+                  <% colores.forEach(color => { %>
+                    <option value="<%= capitalizePrimeraLetra(color) %>" <%= color.toLowerCase() === auto.color.toLowerCase() ? "selected" : null %>> <%= capitalizePrimeraLetra(color) %> </option>
+
+                  <% }) %>  
+                </select>
+                    <div class="invalid-feedback">
+                      Please provide a valid city.
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6 col-md-4">
+                    <label for="km" class="form-label">Kilometraje</label>
+                  <input type="number" value=<%= auto.km %>  class="form-control" id="km" name="km" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid zip.
+                  </div>
+                </div>
+
+                  <div class="col-12 col-md-6 col-md-4">
+                    <label for="imagen" class="form-label">Cambiar imagen</label>
+                  <input type="file" class="form-control" id="imagen" name="imagen" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid zip.
+                  </div>
+                </div>
+                <div class="form-check form-switch">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Vendido </label>
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" <%= auto.vendido ? 'checked' : null %> name="vendido">
+                  </div>
+
+                <div class="col-12">
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </form>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+
+  </body>
+</html>
+

@@ -5,7 +5,7 @@
     <%- include('./partials/header') %>
     <main class="my-5">
         <div class="container">
-            <form class="row g-3 needs-validation" novalidate>
+            <form action="" method="post" class="row g-3 needs-validation" enctype="multipart/form-data" novalidate>
                 <div class="col-12 col-md-6 col-md-4">
                   <label for="marca" class="form-label">Marca</label>
                   <input type="text" class="form-control" id="validationCustom01" name="marca" required>
@@ -20,6 +20,20 @@
                     Looks good!
                   </div>
                 </div>
+                <div class="col-12 col-md-6 col-md-4">
+                  <label for="patente" class="form-label">Patente</label>
+                <input type="text" class="form-control" id="patente" name="patente" required>
+                <div class="invalid-feedback">
+                  Please select a valid state.
+                </div>
+              </div>
+              <div class="col-12 col-md-6 col-md-4">
+                <label for="fecha" class="form-label">Año</label>
+              <input type="date" class="form-control" id="fecha" name="fecha" required>
+              <div class="invalid-feedback">
+                Please provide a valid city.
+              </div>
+            </div>
                 <div class="col-12 col-md-6 col-md-4">
                     <label for="precio" class="form-label">Precio</label>
                   <div class="input-group has-validation">
@@ -38,41 +52,35 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-12 col-md-6 col-md-4">
-                    <label for="anio" class="form-label">Año</label>
-                  <input type="date" class="form-control" id="anio" name="anio" required>
-                  <div class="invalid-feedback">
-                    Please provide a valid city.
-                  </div>
-                </div>
+
                 <div class="col-12 col-md-6 col-md-4">
                     <label for="color" class="form-label">Color</label>
-                    <input type="color" name="color" class="form-control" id="color" required>
+                <select name="color" id="color" class="form-select">
+                  <% colores.forEach(color => { %>
+                    <option value="<%= capitalizePrimeraLetra(color) %>"><%= capitalizePrimeraLetra(color) %> </option>
+
+                  <% }) %>  
+                </select>
                     <div class="invalid-feedback">
                       Please provide a valid city.
                     </div>
                   </div>
                   <div class="col-12 col-md-6 col-md-4">
-                    <label for="anio" class="form-label">Año</label>
-                    <input type="text" class="form-control" id="anio" required>
-                    <div class="invalid-feedback">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6 col-md-4">
-                    <label for="patente" class="form-label">Patente</label>
-                  <input type="text" class="form-control" id="patente" required>
-                  <div class="invalid-feedback">
-                    Please select a valid state.
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 col-md-4">
                     <label for="km" class="form-label">Kilometraje</label>
                   <input type="number" class="form-control" id="km" name="km" required>
                   <div class="invalid-feedback">
                     Please provide a valid zip.
                   </div>
                 </div>
+
+                  <div class="col-12 col-md-6 col-md-4">
+                    <label for="imagen" class="form-label">Imagen</label>
+                  <input type="file" class="form-control" id="imagen" name="imagen" required>
+                  <div class="invalid-feedback">
+                    Please provide a valid zip.
+                  </div>
+                </div>
+
                 <div class="col-12">
                   <button class="btn btn-primary" type="submit">Submit form</button>
                 </div>
